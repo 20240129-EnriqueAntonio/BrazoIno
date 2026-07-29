@@ -1,0 +1,31 @@
+Hola Claude, En esta ocasión serás mi asistente en la programación de un brazo robot tipo SCARA, la programación se realizará en el entorno de Arduino IDE en un lenguaje en C. Primero te proporcionaré todos los  componentes y sus respectivos pines, y después te daré una instrucción clara y precisa de lo que debe hacer.
+
+Componentes y sus pines:
+
+STEP MOTOR 28BYJ-48 = IN1 (pin 10), IN2 (pin 11), IN3 (pin 12), IN4 (pin 13).
+PushUp (pin 4) = Para subir con el motor a pasos mientras este presionado, el motor debe girar de forma antihoraria.
+PushDown (pin 5) = Para bajar con el motor a pasos mientras estepresionado, el motor debe girar en sentido horario.
+Servo1 (pin 6)
+Servo2 (pin 7)
+Pot2 (pin A0) = potenciometro que controla el Servo1.
+Pot3 (pin A1) = potenciometro que controla el Servo2.
+Push1 (pin 8) = Para grabar y resetear, si se preciona por 4s, los movimientos.
+Push2 (pin 9)= para ejecutar los movimientos grabados del robot SCARA y detenga la ejecución si este es presionado por segunda vez.
+
+Una vez teniendo en cuenta todos los componetentes y sus pines, pasaré a ponerte un poco en contexto: El robot tipo SCARA posee un motor a pasos y dos servomotores, el motor a pasos servirá para mover un tornillo sin fin que será encargada de subir y bajar la estructura en la cual se encontrarán los dos servomotores y darán forma al brazo. La parte más tecnica de esto es la configuración del motor a pasos, ya que mientras para los servomotores se utilizará un mapeo sencillo con sus potenciometros correspondientes (0 a 1023 = 0° a 180°), el motor a pasos usará dos push buttons, el PushUp y el PushDown, el PushUp servirá para subir, mientras que el PushDown servirá para bajar.
+
+Ahora con lo dicho anteriormente, te diré que se pretende hacer para que el código funcione correctamente.
+
+Inicialmente, quiero tener la oportunidad de ver el los grados y la posición actual de cada motor, es decir, los grados en los que se encuentrán rotados los servomotores, así como  la posición, o el número de pasos, del motor a pasos. Con los potenciometros controlaré los dos servomotores, el motor a pasos será controlado por 2 push buttons (PushUp y PushDown), el Servo1 por el Pot1 y el Servo2 por el Pot2. Con el primer push button (Push1) iré guardando las posiciones de los tres motores en ese momento, con cada movimiento que valla haciendo con los potenciometros para controlar los dos servomotores y con los botones para el motor a pasos, podría yo guardarlos con un solo botón (Push1) para luego ejecutarlo con el push button 2 (Push2), así como si presiono por segunda vez el Push2 detenga toda la ejecución. Si quisiese, resetear los movimientos/posiciones, tendría yo que presionar el Push1 durante 4 segundos, y así nuevamente volver a grabar las posiciones si así lo deseo o simplemente jugar un poco con los potenciometros sin guardar nada.
+
+Dado a que el Push1 puede grabar varias posiciones por la vibración y rebote constante despues de presionar una sola vez, propongo que agregues un antirebote al grabar posiciones, y solo respetaría el reseteo si mantenemos presionado por más de 4 segundos.
+Como nota extra estarán los mensaje en la terminal de Arduino IDE, allí quiero ser capaz de ver lo siguiente: 
+
+1. La posición inicial de cada motor
+2. Cuando grabo una posición y el número de posición guardada.
+3. Quiero que me arrojé la opción de hacer el recorrido una vez, o en bucle.
+4. Cuando se esta ejecutando el recorrido de las posiciones
+5. Cuando el recorrido a finalizado
+6. Cuando las posiciones se han reseteado.
+
+Con esto en mente y todas las consideraciones, reliza un código para Arduino IDE, su lenguaje es el C y C++. . No obstante, emplea una versión simplificada y adaptada (basada en el proyecto Wiring) que facilita la programación de microcontroladores utilizando funciones específicas de entrada y salida. En cualquier caso te comparto un archivo ejemplo en el que use 4 servomotores para hacer un brazo robotico tipo antropomórfico. Así que adelante Claude Confío en tí.
