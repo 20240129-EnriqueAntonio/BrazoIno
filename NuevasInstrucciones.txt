@@ -1,0 +1,14 @@
+Hola Claude, en esta ocasión quiero que adaptes el código para el motor Nema 17 7HS4401, utilizaré el DRV8825 Driver para el motor a pasos. Anteriormente el 28BYJ-48 utilizaba los pines siguientes:
+STEP MOTOR 28BYJ-48 = IN1 (pin 10), IN2 (pin 11), IN3 (pin 12), IN4 (pin 13).
+
+Pero ahora quitaremos ese motor e implementaremos el Nema 17 que te mencioné y los pines serán los siguientes: 
+M0 (del DRV8825) al pin 10.
+M1 (del DRV8825) al pin 11.
+M2 (del DRV8825) al pin 12.
+STEP (del DRV8825) al pin 2.
+DIR (del DRV8825) al pin 3.
+
+Para el código procura utilizar la librería AccelStepper.h
+L librería nos permitirá controlar el Nema 17 y ahorrarnos código.
+La logica del código sigue siendo la misma, solo cambia el motor que utilizaremos.
+Cualquier duda estoy para responder.
